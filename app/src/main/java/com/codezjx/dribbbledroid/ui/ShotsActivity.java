@@ -1,4 +1,4 @@
-package com.codezjx.dribbbledroid;
+package com.codezjx.dribbbledroid.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,12 +9,21 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class HomeActivity extends AppCompatActivity {
+import com.codezjx.dribbbledroid.R;
+import com.codezjx.dribbbledroid.presenter.ShotsPresenter;
+import com.codezjx.dribbbledroid.utils.ActivityUtils;
+
+/**
+ * Created by codezjx on 2016/6/15.<br/>
+ */
+public class ShotsActivity extends AppCompatActivity {
+
+    private ShotsFragment mShotsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_shots);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -26,6 +35,12 @@ public class HomeActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        mShotsFragment = ShotsFragment.newInstance();
+        ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), mShotsFragment, R.id.content_layout);
+
+        // Create the presenter
+        new ShotsPresenter(mShotsFragment);
     }
 
     @Override

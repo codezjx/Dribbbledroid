@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="shot" type="com.codezjx.dribbbledroid.model.Shot"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="@dimen/shots_item_padding">
+
+        <ImageView
+            android:id="@+id/shot_img"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/shots_item_height"/>
+
+        <TextView
+            android:id="@+id/shot_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/shot_img"
+            android:text="@{shot.title}"
+            android:textColor="#333333"
+            android:textSize="16sp" />
+    </RelativeLayout>
+</layout>
