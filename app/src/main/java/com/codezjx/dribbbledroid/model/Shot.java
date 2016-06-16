@@ -10,18 +10,33 @@ public class Shot {
 
     @SerializedName("id")
     private String mId;
+
     @SerializedName("title")
     private String mTitle;
+
     @SerializedName("description")
     private String mDescription;
+
     @SerializedName("views_count")
     private int mViewsCount;
+
     @SerializedName("comments_count")
     private int mCommentsCount;
+
     @SerializedName("likes_count")
     private int mLikesCount;
+
     @SerializedName("user")
     private User mUser;
+
+    @SerializedName("images")
+    private Image mImage;
+
+    @SerializedName("team")
+    private Team mTeam;
+
+    @SerializedName("animated")
+    private boolean mAnimated;
 
     public String getId() {
         return mId;
@@ -77,5 +92,29 @@ public class Shot {
 
     public void setUser(User user) {
         mUser = user;
+    }
+
+    public Image getImage() {
+        return mImage;
+    }
+
+    public void setImage(Image image) {
+        mImage = image;
+    }
+
+    public Team getTeam() {
+        return mTeam;
+    }
+
+    public void setTeam(Team team) {
+        mTeam = team;
+    }
+
+    public boolean isAnimated() {
+        return mAnimated;
+    }
+
+    public void setAnimated(boolean animated) {
+        mAnimated = animated;
     }
 }

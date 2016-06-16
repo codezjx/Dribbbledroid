@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by codezjx on 2016/6/14.<br/>
- * Dribbble user model.
+ * Dribbble team model.
  */
-public class User {
+public class Team {
 
     @SerializedName("id")
     private String mId;
