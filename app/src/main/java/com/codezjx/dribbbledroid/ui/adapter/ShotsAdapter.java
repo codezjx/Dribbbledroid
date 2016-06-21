@@ -1,9 +1,13 @@
 package com.codezjx.dribbbledroid.ui.adapter;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.codezjx.dribbbledroid.R;
 import com.codezjx.dribbbledroid.databinding.ShotsGridItemBinding;
@@ -16,9 +20,11 @@ import java.util.List;
  */
 public class ShotsAdapter extends RecyclerView.Adapter<ShotsAdapter.ShotsViewHolder> {
 
+    private Context mContext;
     private List<Shot> mShots;
 
-    public ShotsAdapter(List<Shot> shots) {
+    public ShotsAdapter(Context context, List<Shot> shots) {
+        mContext = context;
         mShots = shots;
     }
 
@@ -45,10 +51,23 @@ public class ShotsAdapter extends RecyclerView.Adapter<ShotsAdapter.ShotsViewHol
     public void onBindViewHolder(ShotsViewHolder holder, int position) {
         Shot shot = mShots.get(position);
         holder.mDataBinding.setShot(shot);
+        setVectorDrawableLeft(holder.mDataBinding.viewsTv, R.drawable.shot_view);
+        setVectorDrawableLeft(holder.mDataBinding.commentsTv, R.drawable.shot_comment);
+        setVectorDrawableLeft(holder.mDataBinding.likesTv, R.drawable.shot_like);
     }
 
     @Override
     public int getItemCount() {
         return mShots.size();
+    }
+
+    private void setVectorDrawableLeft(TextView textView, int vectorDrawableId) {
+        Resources res = mContext.getResources();
+        Resources.Theme theme = mContext.getTheme();
+        VectorDrawableCompat vectorDrawable = VectorDrawableCompat.create(res, vectorDrawableId, theme);
+        if (vectorDrawable != null) {
+            vectorDrawable.setTint(res.getColor(R.color.text_grey_lite));
+        }
+        textView.setCompoundDrawablesWithIntrinsicBounds(vectorDrawable, null, null, null);
     }
 }

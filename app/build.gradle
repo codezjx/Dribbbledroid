@@ -10,6 +10,9 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        // Specify the "PNG generation" to generate multi densities png files
+        // vectorDrawables.generatedDensities = ['mdpi', 'hdpi', 'xhdpi']
 
         buildConfigField "String", "DRIBBBLE_CLIENT_ID", "\"${dribbble_client_id}\""
         buildConfigField "String", "DRIBBBLE_CLIENT_SECRET", "\"${dribbble_client_secret}\""

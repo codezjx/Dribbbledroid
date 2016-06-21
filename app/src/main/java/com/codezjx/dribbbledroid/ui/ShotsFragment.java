@@ -56,7 +56,7 @@ public class ShotsFragment extends AbstractSaveStateFragment implements ShotsCon
     protected void onCreateViewInChild(LayoutInflater pInflater, ViewGroup pContainer, Bundle pSavedInstanceState) {
         mShots = new ArrayList<Shot>();
         // Init recycler view
-        mAdapter = new ShotsAdapter(mShots);
+        mAdapter = new ShotsAdapter(getContext(), mShots);
         mBinding.shotsRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), COLUMNS));
         mBinding.shotsRecyclerView.setAdapter(mAdapter);
     }

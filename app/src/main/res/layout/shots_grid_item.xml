@@ -19,13 +19,33 @@
             app:placeholder="@{@drawable/shot_placeholder}"/>
 
         <TextView
-            android:id="@+id/shot_title"
+            android:id="@+id/likes_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_below="@id/shot_img"
-            android:text="@{shot.title}"
-            android:textColor="#333333"
-            android:textSize="16sp" />
+            android:layout_alignParentRight="true"
+            android:text="@{String.valueOf(shot.likesCount)}"
+            android:textSize="16sp"
+            android:textColor="@color/text_grey_lite"/>
+
+        <TextView
+            android:id="@+id/comments_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/shot_img"
+            android:layout_toLeftOf="@id/likes_tv"
+            android:text="@{String.valueOf(shot.commentsCount)}"
+            android:textSize="16sp"
+            android:textColor="@color/text_grey_lite"/>
+
+        <TextView
+            android:id="@+id/views_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/shot_img"
+            android:layout_toLeftOf="@id/comments_tv"
+            android:text="@{String.valueOf(shot.viewsCount)}"
+            android:textSize="16sp"
+            android:textColor="@color/text_grey_lite"/>
     </RelativeLayout>
 </layout>
