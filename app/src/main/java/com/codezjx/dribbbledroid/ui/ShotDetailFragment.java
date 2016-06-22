@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.codezjx.dribbbledroid.R;
 import com.codezjx.dribbbledroid.contract.ShotDetailContract;
+import com.codezjx.dribbbledroid.databinding.FragmentShotDetailBinding;
 import com.codezjx.dribbbledroid.model.Shot;
 import com.codezjx.dribbbledroid.ui.base.AbstractSaveStateFragment;
 
@@ -20,6 +21,7 @@ public class ShotDetailFragment extends AbstractSaveStateFragment implements Sho
 
     private static final String TAG = "ShotDetailFragment" ;
     private ShotDetailContract.Presenter mPresenter;
+    private FragmentShotDetailBinding mBinding;
             
     @Override
     protected View getContentView(LayoutInflater inflater, ViewGroup container) {
@@ -28,7 +30,7 @@ public class ShotDetailFragment extends AbstractSaveStateFragment implements Sho
 
     @Override
     protected void onCreateViewInChild(LayoutInflater pInflater, ViewGroup pContainer, Bundle pSavedInstanceState) {
-        
+        mBinding = FragmentShotDetailBinding.bind(mRootView);
     }
 
     @Override
@@ -39,7 +41,7 @@ public class ShotDetailFragment extends AbstractSaveStateFragment implements Sho
 
     @Override
     public void showShotDetail(Shot shot) {
-        Log.d(TAG, "showShotDetail:" + shot.getTitle());
+        mBinding.setShot(shot);
     }
 
     @Override

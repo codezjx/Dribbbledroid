@@ -6,4 +6,5 @@
 
     <dimen name="shots_item_height">160dp</dimen>
     <dimen name="shots_item_padding">8dp</dimen>
+    <dimen name="shot_detail_img_height">320dp</dimen>
 </resources>

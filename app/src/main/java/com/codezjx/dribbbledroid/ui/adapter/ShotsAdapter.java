@@ -1,10 +1,13 @@
 package com.codezjx.dribbbledroid.ui.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.support.graphics.drawable.VectorDrawableCompat;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,7 +54,7 @@ public class ShotsAdapter extends RecyclerView.Adapter<ShotsAdapter.ShotsViewHol
     }
 
     @Override
-    public void onBindViewHolder(ShotsViewHolder holder, int position) {
+    public void onBindViewHolder(final ShotsViewHolder holder, int position) {
         final Shot shot = mShots.get(position);
         holder.mDataBinding.setShot(shot);
         setVectorDrawableLeft(holder.mDataBinding.viewsTv, R.drawable.shot_view);
@@ -62,7 +65,12 @@ public class ShotsAdapter extends RecyclerView.Adapter<ShotsAdapter.ShotsViewHol
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, ShotDetailActivity.class);
                 intent.putExtra(ShotDetailActivity.INTENT_EXTRA_SHOT, shot);
-                mContext.startActivity(intent);
+                String transitionName = mContext.getString(R.string.transition_shot_image);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                        (Activity) mContext,
+                        holder.mDataBinding.shotImg,
+                        transitionName);
+                ActivityCompat.startActivity((Activity) mContext, intent, options.toBundle());
             }
         });
     }
