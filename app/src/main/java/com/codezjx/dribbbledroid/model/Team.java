@@ -1,12 +1,15 @@
 package com.codezjx.dribbbledroid.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by codezjx on 2016/6/14.<br/>
  * Dribbble team model.
  */
-public class Team {
+public class Team implements Parcelable {
 
     @SerializedName("id")
     private String mId;
@@ -73,4 +76,43 @@ public class Team {
     public void setBio(String bio) {
         mBio = bio;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.mId);
+        dest.writeString(this.mName);
+        dest.writeString(this.mUserName);
+        dest.writeString(this.mAvatarUrl);
+        dest.writeString(this.mLocation);
+        dest.writeString(this.mBio);
+    }
+
+    public Team() {
+    }
+
+    protected Team(Parcel in) {
+        this.mId = in.readString();
+        this.mName = in.readString();
+        this.mUserName = in.readString();
+        this.mAvatarUrl = in.readString();
+        this.mLocation = in.readString();
+        this.mBio = in.readString();
+    }
+
+    public static final Parcelable.Creator<Team> CREATOR = new Parcelable.Creator<Team>() {
+        @Override
+        public Team createFromParcel(Parcel source) {
+            return new Team(source);
+        }
+
+        @Override
+        public Team[] newArray(int size) {
+            return new Team[size];
+        }
+    };
 }
