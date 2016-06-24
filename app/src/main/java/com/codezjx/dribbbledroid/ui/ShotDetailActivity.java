@@ -1,5 +1,6 @@
 package com.codezjx.dribbbledroid.ui;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.codezjx.dribbbledroid.R;
+import com.codezjx.dribbbledroid.databinding.ActivityShotDetailBinding;
 import com.codezjx.dribbbledroid.model.Shot;
 import com.codezjx.dribbbledroid.presenter.ShotDetailPresenter;
 
@@ -19,14 +21,16 @@ public class ShotDetailActivity extends AppCompatActivity {
 
     private static final String TAG = "ShotDetailActivity";
     public static final String INTENT_EXTRA_SHOT = "EXTRA_SHOT";
+    private ActivityShotDetailBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
-        setContentView(R.layout.activity_shot_detail);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_shot_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +42,7 @@ public class ShotDetailActivity extends AppCompatActivity {
         });
 
         Shot shot = getIntent().getParcelableExtra(INTENT_EXTRA_SHOT);
+        mBinding.setShot(shot);
         ShotDetailFragment fragment = (ShotDetailFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
         // Create the presenter
         new ShotDetailPresenter(shot, fragment);

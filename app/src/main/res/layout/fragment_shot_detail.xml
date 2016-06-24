@@ -13,13 +13,5 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context=".ui.ShotDetailFragment"
         tools:showIn="@layout/activity_shot_detail">
-        <ImageView
-            android:id="@+id/shot_img"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/shot_detail_img_height"
-            android:transitionName="@string/transition_shot_image"
-            app:imageUrl="@{shot.image.normal}"
-            app:error="@{@drawable/shot_error}"
-            app:placeholder="@{@drawable/shot_placeholder}"/>
     </RelativeLayout>
 </layout>
