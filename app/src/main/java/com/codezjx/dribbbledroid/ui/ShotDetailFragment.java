@@ -10,8 +10,11 @@ import android.view.ViewGroup;
 import com.codezjx.dribbbledroid.R;
 import com.codezjx.dribbbledroid.contract.ShotDetailContract;
 import com.codezjx.dribbbledroid.databinding.FragmentShotDetailBinding;
+import com.codezjx.dribbbledroid.model.Comment;
 import com.codezjx.dribbbledroid.model.Shot;
 import com.codezjx.dribbbledroid.ui.base.AbstractSaveStateFragment;
+
+import java.util.List;
 
 /**
  * Created by codezjx on 2016/6/22.<br/>
@@ -42,6 +45,11 @@ public class ShotDetailFragment extends AbstractSaveStateFragment implements Sho
     @Override
     public void showShotDetail(Shot shot) {
         mBinding.setShot(shot);
+    }
+
+    @Override
+    public void showComments(List<Comment> comments) {
+        
     }
 
     @Override

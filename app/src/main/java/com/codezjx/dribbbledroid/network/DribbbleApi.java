@@ -1,5 +1,6 @@
 package com.codezjx.dribbbledroid.network;
 
+import com.codezjx.dribbbledroid.model.Comment;
 import com.codezjx.dribbbledroid.model.Shot;
 
 import java.util.List;
@@ -26,4 +27,9 @@ public interface DribbbleApi {
                                        @Query("per_page") int pageSize);
     @GET("shots/{id}")
     Observable<Shot> getShot(@Path("id") String id);
+
+    @GET("shots/{id}/comments")
+    Observable<List<Comment>> getCommentList(@Path("id") String id,
+                                       @Query("page") int page,
+                                       @Query("per_page") int pageSize);
 }
