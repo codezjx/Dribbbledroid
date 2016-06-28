@@ -17,7 +17,8 @@
             android:transitionName="@string/transition_shot_image"
             app:imageUrl="@{shot.image.normal}"
             app:error="@{@drawable/shot_error}"
-            app:placeholder="@{@drawable/shot_placeholder}"/>
+            app:placeholder="@{@drawable/shot_placeholder}"
+            app:isCircle="@{false}"/>
 
         <TextView
             android:id="@+id/likes_tv"

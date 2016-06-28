@@ -17,7 +17,8 @@
             android:layout_height="@dimen/comment_avator_size"
             app:imageUrl="@{comment.user.avatarUrl}"
             app:error="@{@drawable/shot_error}"
-            app:placeholder="@{@drawable/shot_placeholder}"/>
+            app:placeholder="@{@drawable/shot_placeholder}"
+            app:isCircle="@{true}"/>
 
         <TextView
             android:id="@+id/list_item_user_name"

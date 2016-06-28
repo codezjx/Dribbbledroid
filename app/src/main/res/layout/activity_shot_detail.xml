@@ -38,6 +38,7 @@
                     app:imageUrl="@{shot.image.normal}"
                     app:error="@{@drawable/shot_error}"
                     app:placeholder="@{@drawable/shot_placeholder}"
+                    app:isCircle="@{false}"
                     app:layout_collapseMode="parallax"/>
                 
                 <android.support.v7.widget.Toolbar
