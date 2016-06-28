@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <import type="com.codezjx.dribbbledroid.utils.DateUtils"/>
+        <variable name="comment" type="com.codezjx.dribbbledroid.model.Comment"/>
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="@dimen/md_keylines">
+
+        <ImageView
+            android:id="@+id/list_item_user_avatar"
+            android:layout_width="@dimen/comment_avator_size"
+            android:layout_height="@dimen/comment_avator_size"
+            app:imageUrl="@{comment.user.avatarUrl}"
+            app:error="@{@drawable/shot_error}"
+            app:placeholder="@{@drawable/shot_placeholder}"/>
+
+        <TextView
+            android:id="@+id/list_item_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/md_keylines"
+            android:layout_toRightOf="@+id/list_item_user_avatar"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="@{comment.user.name}"
+            android:textColor="@color/text_grey"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/list_item_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_item_user_name"
+            android:layout_marginLeft="@dimen/md_keylines"
+            android:layout_toRightOf="@+id/list_item_user_avatar"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="@{comment.body}"
+            android:textColor="@color/text_grey_lite"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/list_item_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:text="@{DateUtils.formatDate(comment.createdAt)}"
+            android:textColor="@color/text_grey_lite"
+            android:textSize="14sp"/>
+    </RelativeLayout>
+</layout>
